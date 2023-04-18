@@ -1,2 +1,11 @@
-venv
-__pycache__
+# Ignore the virtual environment
+venv/
+
+#  Ignore __pycache__
+__pycache__/
+
+#  Also include .vscode if you have a .vscode
+.vscode/
+
+#  Hide the .env file casue that is where we keep secrets, keys etc.
+.env
