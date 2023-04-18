@@ -27,6 +27,8 @@ def signup():
         return redirect(url_for('hello'))
     return render_template("signup.html", form=form)
 
+
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginForm()
@@ -35,6 +37,11 @@ def login():
         username = form.username.data
         password = form.password.data
         print(username, password)
-        flash(f"You have successfully logged in as {username}!", "success")
-        return redirect(url_for('hello'))
+        user = User.query.filter_by(username=username).first()
+        if user is not None and user.check_password(password):
+            flash(f'You have successfully logged in as {username}','success')
+            return redirect(url_for('hello'))
+        else:
+            flash('Invalid username and/or password Please try again', 'danger')
+            return redirect(url_for('login'))
     return render_template("login.html", form=form)
