@@ -58,6 +58,7 @@ def logout():
 
 
 @app.route('/create', methods=["GET", "POST"])
+# Login required decorator requires user to be logged in before accessing this route/page
 @login_required
 def create_post():
     form = PostForm()
