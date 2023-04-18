@@ -18,10 +18,17 @@ def signup():
         password = form.password.data
         print(first_name, last_name, email, username, password)
         flash(f"Thank you {first_name} for signing up!", "success")
-        return redirect(url_for('login'))
+        return redirect(url_for('hello'))
     return render_template("signup.html", form=form)
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginForm()
+    if form.validate_on_submit():
+        print('Horaaaay! You are now logged in!')
+        username = form.username.data
+        password = form.password.data
+        print(username, password)
+        flash(f"You have successfully logged in as {username}!", "success")
+        return redirect(url_for('hello'))
     return render_template("login.html", form=form)
