@@ -1,5 +1,6 @@
 from app import app
-from flask import render_template, url_for
+from flask import render_template
+from app.forms import SignUpForm
 
 @app.route("/")
 def hello():
@@ -7,7 +8,9 @@ def hello():
 
 @app.route("/signup")
 def signup():
-    return render_template("signup.html")
+    form = SignUpForm()
+
+    return render_template("signup.html", form=form)
 
 @app.route("/login")
 def login():
