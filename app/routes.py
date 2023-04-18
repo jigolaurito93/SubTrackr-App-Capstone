@@ -1,6 +1,6 @@
 from app import app
 from flask import render_template, redirect, url_for, flash
-from app.forms import SignUpForm
+from app.forms import SignUpForm, LoginForm
 
 @app.route("/")
 def hello():
@@ -23,4 +23,5 @@ def signup():
 
 @app.route("/login")
 def login():
-    return render_template("login.html")
+    form = LoginForm()
+    return render_template("login.html", form=form)
