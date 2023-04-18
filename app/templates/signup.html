@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %} Sign Up {% endblock %}
+
+{% block header %}
+    <h1>Sign Up</h1>
+{% endblock %}
+
+    {% block content %}
+        <div class="row d-flex justify-content-center">
+            <div class="col-5">
+
+                <div class="card mt-5 ">
+                    <div class="card-body mx-5 my-5">
+                        <form action="" method="post">
+                            {{ form.csrf_token }}
+
+                            {{ form.first_name.label(class="mt-3") }}
+                            {{ form.first_name(class="form-control", placeholder="Enter First Name") }}
+
+                            {{ form.last_name.label(class="mt-3") }}
+                            {{ form.last_name(class="form-control", placeholder="Enter Last Name") }}
+
+                            {{ form.username.label(class="mt-3") }}
+                            {{ form.username(class="form-control", placeholder="Enter Username") }}
+
+                            {{ form.email.label(class="mt-3") }}
+                            {{ form.email(class="form-control", placeholder="Enter Email") }}
+
+                            {{ form.password.label(class="mt-3") }}
+                            {{ form.password(class="form-control", placeholder="Password") }}
+
+                            {{ form.confirm_pass.label(class="mt-3") }}
+                            {{ form.confirm_pass(class="form-control", placeholder="Confirm Password") }}
+
+                            {{ form.submit(class="btn btn-primary w-100 mt-5") }}
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}

@@ -1,0 +1,29 @@
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block header %}  
+    <h1>Jose's Profile</h1>
+    <h5>SUBSCRIPTION CARD BELOW</h5>
+{% endblock %}
+
+{% block content %}
+    <div class="row ">
+        <div class="col-3">
+
+                    <div class="card mt-3 ">
+                        <div class="row g-0 d-flex justify-content-center">
+                            <div class="col-md-4">
+                                <img class="" src="./static/SubTrackr.png" alt="" style="width: 310px; height: 310px;">
+                            </div>
+                            <div class="col-8">
+                                <h2 class="card-subtitle">NETFLIX</h2>
+                                <h5 class="card-title">March 5</h5>             
+                            </div>
+                        </div>
+                    </div>
+        
+        </div>
+    </div>
+{% endblock %}
