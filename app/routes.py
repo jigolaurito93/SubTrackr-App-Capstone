@@ -62,5 +62,12 @@ def logout():
 @login_required
 def create_post():
     form = PostForm()
+    if form.validate_on_submit():
+        title = form.title.data
+        body = form.body.data
+        image_url = form.image_url.data
+        print(title, body, image_url)
+        flash(f"Your post has been created successfully", "success")
+        return redirect(url_for('hello'))
     return render_template("create.html", form=form)
     
