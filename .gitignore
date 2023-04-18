@@ -9,3 +9,6 @@ __pycache__/
 
 #  Hide the .env file casue that is where we keep secrets, keys etc.
 .env
+
+
+app.db
