@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, EmailField
+from wtforms import StringField, PasswordField, SubmitField, EmailField, TextAreaField
 from wtforms.validators import EqualTo, InputRequired
 
 class SignUpForm(FlaskForm):
@@ -15,3 +15,10 @@ class LoginForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired()])
     password = PasswordField('Password', validators=[InputRequired()])
     submit = SubmitField('Log in')
+
+class PostForm(FlaskForm):
+    title = StringField('Title', validators=[InputRequired()])
+    # TextareaField is a form field that can accept multiline text.
+    body = TextAreaField('Body', validators=[InputRequired()])
+    image_url = StringField('Image URL')
+    submit = SubmitField(' Create Post')
