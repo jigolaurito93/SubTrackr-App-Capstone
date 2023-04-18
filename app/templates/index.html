@@ -5,8 +5,13 @@
 
 {% block header %}  
     <h1>Jose's Profile</h1>
-    <h5>SUBSCRIPTION CARD BELOW</h5>
+    {% if current_user.is_authenticated %}
+        <h5>Nice to See You Again, {{ current_user.username }}! </h5>
+    {% else %}
+        <h5>Please Sign Up or Log In to Create New Posts</h5>
+    {% endif %}
 {% endblock %}
+
 
 {% block content %}
     <div class="row ">
