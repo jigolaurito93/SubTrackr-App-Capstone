@@ -6,8 +6,9 @@ from flask_login import login_user, logout_user, login_required, current_user
 
 
 @app.route("/")
-def hello():
-    return render_template("index.html")
+def index():
+    posts = Post.query.all()
+    return render_template("index.html", posts=posts)
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
@@ -26,7 +27,7 @@ def signup():
             return redirect(url_for('signup'))
         new_user = User(first_name=first_name, last_name=last_name, email=email, username=username, password=password)
         flash(f"Thank you {new_user.username} for signing up! You can now log in", "success")
-        return redirect(url_for('hello'))
+        return redirect(url_for('index'))
     return render_template("signup.html", form=form)
 
 
@@ -43,7 +44,7 @@ def login():
         if user is not None and user.check_password(password):
             login_user(user)
             flash(f'You have successfully logged in as {username}','success')
-            return redirect(url_for('hello'))
+            return redirect(url_for('index'))
         else:
             flash('Invalid username and/or password Please try again', 'danger')
             return redirect(url_for('login'))
@@ -54,7 +55,7 @@ def login():
 def logout():
     logout_user()
     flash('You have successfully logged out', 'info')
-    return redirect(url_for('hello'))
+    return redirect(url_for('index'))
 
 
 @app.route('/create', methods=["GET", "POST"])
@@ -73,6 +74,6 @@ def create_post():
         new_post = Post(subscription=subscription, amount=amount, image_url=image_url, date=date, frequency=frequency, user_id=current_user.id)
         print(subscription, amount, image_url, date, frequency)
         flash(f"{new_post.subscription} Subscription Created Successfully!", "success")
-        return redirect(url_for('hello'))
+        return redirect(url_for('index'))
     return render_template("create.html", form=form)
     

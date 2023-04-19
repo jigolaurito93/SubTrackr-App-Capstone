@@ -14,6 +14,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(256), nullable=False)
     date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     # relationship of Post class
+    # Can be used as back reference. Example: post.author or author.posts
     posts = db.relationship('Post', backref='author')
 
     def __init__(self, **kwargs):

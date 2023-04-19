@@ -14,20 +14,30 @@
 
 {% block content %}
     <div class="row ">
-        <div class="col-3">
+        <div class="col d-flex justify-content-center w-100">
 
-                    <div class="card mt-3 ">
-                        <div class="row g-0 d-flex justify-content-center">
-                            <div class="col-md-4">
-                                <img class="" src="./static/SubTrackr.png" alt="" style="width: 310px; height: 310px;">
-                            </div>
-                            <div class="col-8">
-                                <h2 class="card-subtitle">NETFLIX</h2>
-                                <h5 class="card-title">March 5</h5>             
+                {% for post in posts %}
+                        <div class="card mt-3 mx-3 w-100">
+                            <div class="row ">
+                                <div class="col">
+
+                                    {% if post.subscription == 'Disney+' %}
+                                        <img class="" src="./static/disney.png" alt="" style="width: 310px; height: 310px;">
+                                    {% else %}
+                                        <img class="" src="./static/SubTrackr.png" alt="" style="width: 310px; height: 310px;">
+                                    {% endif %}
+
+                                </div>
+                                <div class="col">
+                                    <h2 class="card-subtitle">{{ post.subscription }}</h2>
+                                    <h5 class="card-title">{{ post.date }}</h5>       
+                                    <h5 class="card-title">${{ post.amount }}</h5>    
+                                    <h5 class="card-title">{{ post.frequency }}</h5>          
+                                </div>
                             </div>
                         </div>
-                    </div>
-        
+                {% endfor %}
+
         </div>
     </div>
 {% endblock %}
