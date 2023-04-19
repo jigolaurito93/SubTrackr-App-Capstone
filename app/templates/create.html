@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} Add A Subscription {% endblock %}
+{% block title %} Add A SubScription {% endblock %}
 
 {% block header %}
 <h1>Add a Subscription</h1>  
@@ -15,11 +15,19 @@
 
                         {{ form.csrf_token }}
 
-                        {{ form.title.label }}
-                        {{ form.title(class="form-control", placeholder="Enter Post Title" )}}
+                        {{ form.subscription.label }}
+                        {{ form.subscription(class="form-control", placeholder="Enter Subscription Name" )}}
 
-                        {{ form.body.label }}
-                        {{ form.body(class="form-control", placeholder="Enter Post Body") }}
+                      
+
+                        {{ form.amount.label }}
+                        {{ form.amount(class="form-control", placeholder="Enter Amount") }}
+
+                        {{ form.date.label }}
+                        {{ form.date(class="form-control") }}
+                        
+                        {{ form.frequency.label }}
+                        {{ form.frequency(class="form-control") }}
 
                         {{ form.image_url.label }}
                         {{ form.image_url(class="form-control", placeholder="Enter Image URL") }}

@@ -1,8 +1,8 @@
 from app import app, db
 from flask import render_template, redirect, url_for, flash
 from app.forms import SignUpForm, LoginForm, PostForm
-from app.models import User
-from flask_login import login_user, logout_user, login_required
+from app.models import User, Post
+from flask_login import login_user, logout_user, login_required, current_user
 
 
 @app.route("/")
@@ -63,11 +63,17 @@ def logout():
 def create_post():
     form = PostForm()
     if form.validate_on_submit():
-        title = form.title.data
-        body = form.body.data
+        print('Horaaaay! You have created a post!')
+        subscription = form.subscription.data
+        other = form.other.data
+        amount = form.amount.data
+        date = form.date.data
+        frequency = form.frequency.data
         image_url = form.image_url.data
-        print(title, body, image_url)
-        flash(f"Your post has been created successfully", "success")
+        print(current_user)
+        new_post = Post(subscription=subscription, amount=amount, image_url=image_url, date=date, frequency=frequency, other=other, user_id=current_user.id)
+        print(subscription, amount, image_url, date, frequency, other)
+        flash(f"Subscription Created Successfully", "success")
         return redirect(url_for('hello'))
     return render_template("create.html", form=form)
     
