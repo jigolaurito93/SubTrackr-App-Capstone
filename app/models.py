@@ -13,6 +13,8 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(50), unique=True, nullable=False)
     password = db.Column(db.String(256), nullable=False)
     date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    # relationship of Post class
+    posts = db.relationship('Post', backref='author')
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -33,8 +35,7 @@ class User(db.Model, UserMixin):
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     subscription = db.Column(db.String(100), nullable=False)
-    other = db.Column(db.String(50), nullable=True)
-    amount = db.Column(db.Integer, nullable=False)
+    amount = db.Column(db.Float, nullable=False)
     # image_url = db.Column(db.String(100), nullable=False, default=random_photos_url)
     date = db.Column(db.String(20), nullable=False)
     frequency = db.Column(db.String(100), nullable=False)

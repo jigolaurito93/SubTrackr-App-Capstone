@@ -65,15 +65,14 @@ def create_post():
     if form.validate_on_submit():
         print('Horaaaay! You have created a post!')
         subscription = form.subscription.data
-        other = form.other.data
         amount = form.amount.data
         date = form.date.data
         frequency = form.frequency.data
-        image_url = form.image_url.data
+        image_url = form.image_url.data # or Non
         print(current_user)
-        new_post = Post(subscription=subscription, amount=amount, image_url=image_url, date=date, frequency=frequency, other=other, user_id=current_user.id)
-        print(subscription, amount, image_url, date, frequency, other)
-        flash(f"Subscription Created Successfully", "success")
+        new_post = Post(subscription=subscription, amount=amount, image_url=image_url, date=date, frequency=frequency, user_id=current_user.id)
+        print(subscription, amount, image_url, date, frequency)
+        flash(f"{new_post.subscription} Subscription Created Successfully!", "success")
         return redirect(url_for('hello'))
     return render_template("create.html", form=form)
     
