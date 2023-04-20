@@ -10,14 +10,14 @@
       </button>
       <div class="collapse navbar-collapse" id="collapseLinks">
         <div class="navbar-nav">
-            <a class="nav-link mx-2" aria-current="page" href="/" id="navi">Home</a>
+            <a class="nav-link mx-2 text-white" aria-current="page" href="/" id="navi">Home</a>
 
             {% if current_user.is_authenticated %}
-                <a class="nav-link mx-2" href="/create">Create A Post</a>
-                <a class="nav-link mx-2" href="/logout">Log Out</a>
+                <a class="nav-link mx-2 text-white" href="/create" id="navi">Add Subscription</a>
+                <a class="nav-link mx-2 text-white" href="/logout" id="navi">Log Out</a>
             {% else %}
-                <a class="nav-link mx-2" href="/signup">Sign Up</a>
-                <a class="nav-link mx-2" href="/login">Log In</a>
+                <a class="nav-link mx-2 text-white" href="/signup" id="navi">Sign Up</a>
+                <a class="nav-link mx-2 text-white" href="/login" id="navi">Log In</a>
             {% endif %}
 
         </div>

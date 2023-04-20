@@ -3,11 +3,10 @@
 {% block title %} Home {% endblock %}
 
 {% block header %}  
-    <h1> Profile</h1>
+    <h1 id="header">{{ current_user.first_name }}'s Profile</h1>
     {% if current_user.is_authenticated %}
-        <h5>Nice to See You Again, {{ current_user.username }}! </h5>
     {% else %}
-        <h5>Please Sign Up or Log In to Create New Posts</h5>
+        <h5 id="header">Please Sign Up or Log In to Create New Posts</h5>
     {% endif %}
 {% endblock %}
 
@@ -24,19 +23,20 @@
                                         <img class="mt-2 rounded" src="./static/images/{{ post.subscription }}.png" alt="" style="width: 250; height: 250;"">
                               
                                         <div class="card-body">
-                                            <div class="card-title">{{ post.subscription }}</div>
-                                            <div class="card-text">{{ post.date }}</div>       
-                                            <div class="card-text">${{ post.amount }}</div>    
-                                            <div class="card-text">{{ post.frequency }}</div>
+                                            <div class="" id="card1">{{ post.subscription }}</div>
+                                            <div class="" id="card2">{{ post.date }}</div>       
+                                            <div class="" id="card2">${{ post.amount }}</div>    
+                                            <div class="" id="card2">{{ post.frequency }}</div>
                                         </div>
                                     
 
-                                    
-                                        <a href="{{ url_for('edit_post', post_id=post.id) }}", class="btn btn-success">Edit</a>        
-                                            <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePostModal-{{ post.id }}">
-                                            Delete
-                                        </button>
+                                        <div class="d-flex justify-content-center" style="margin-bottom: 20px;">
+                                            <a href="{{ url_for('edit_post', post_id=post.id) }}", class="g-col-6 btn rounded-pill w-50 mx-1" id="btn">EDIT</a>        
+                                                <!-- Button trigger modal -->
+                                            <button type="button" class="g-col-6 btn rounded-pill w-50 mx-1" data-bs-toggle="modal" data-bs-target="#deletePostModal-{{ post.id }}" id="btn">
+                                                DELETE
+                                            </button>
+                                        </div>
                                     
 
                                     

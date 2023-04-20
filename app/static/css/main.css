@@ -3,5 +3,26 @@ body{
 }
 
 #navi{
-    font-family: 'Permanent Marker', cursive;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+}
+
+#card1{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 40px;
+}
+
+#card2{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 23px;
+}
+
+#header{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 50px;
+}
+
+#btn{
+    background-color: rgb(224, 159, 60);
+    font-family: 'Maven Pro', sans-serif;
 }

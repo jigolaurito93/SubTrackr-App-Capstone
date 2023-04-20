@@ -11,8 +11,9 @@ def home():
 @app.route("/")
 @login_required
 def index():
+    form = SignUpForm
     posts = Post.query.all()
-    return render_template("index.html", posts=posts)
+    return render_template("index.html", posts=posts, form=form)
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():

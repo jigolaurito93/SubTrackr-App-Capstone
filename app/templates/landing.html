@@ -10,8 +10,50 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 <body>
+
+     <!-- NAVBAR -->
+
+    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+
+        {% if current_user.is_authenticated %}
+            <a class="navbar-brand" href="/index">
+                <img src="./static/Subtrackr nav.png" alt="Subtrackr Logo" style="width: 90px; height: 50px;">
+            </a>
+        {% else %}
+            <a class="navbar-brand" href="/home">
+                <img src="./static/Subtrackr nav.png" alt="Subtrackr Logo" style="width: 90px; height: 50px;">
+            </a>
+        {% endif %}
+
+    
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapseLinks">
+            <div class="navbar-nav">
+                
+                {% if current_user.is_authenticated %}
+                    <a class="nav-link mx-2 text-white" aria-current="page" href="/" id="navi">Home</a>
+                    <a class="nav-link mx-2 text-white" href="/create" id="navi">Add Subscription</a>
+                    <a class="nav-link mx-2 text-white" href="/logout" id="navi">Log Out</a>
+                {% else %}
+                <a class="nav-link mx-2 text-white" aria-current="page" href="/home" id="navi">Home</a>
+                    <a class="nav-link mx-2 text-white" href="/signup" id="navi">Sign Up</a>
+                    <a class="nav-link mx-2 text-white" href="/login" id="navi">Log In</a>
+                {% endif %}
+    
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- NAVBAR -->
 
     <div class="row bg-secondary">
         {% include 'alerts.html' %}
