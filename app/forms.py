@@ -24,7 +24,7 @@ class PostForm(FlaskForm):
     # otherfield = StringField('Other')
     # TextareaField is a form field that can accept multiline text.
     # amount = DecimalField('Amount', places=2, rounding=ROUND_HALF_UP )
-    amount = DecimalField('Amount', places=3, validators=[InputRequired()] )
+    amount = DecimalField('Amount', places=2, validators=[InputRequired()] )
     date = DateField('Subscription Date', validators=[InputRequired()])
     frequency = SelectField('Payment Frequency', choices=[('Daily', 'Daily'), ('Weekly', 'Weekly'), ('Bi-weekly', 'Bi-weekly'), ('Semi-monthly', 'Semi-monthly'), ('Monthly', 'Monthly'), ('Quarterly 6', 'Quarterly'), ('Semi-annually', 'Semi-annually'), ('Annually', 'Annually')], validators=[InputRequired()])
     image_url = StringField('Image URL')

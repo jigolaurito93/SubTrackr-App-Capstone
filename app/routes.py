@@ -76,4 +76,37 @@ def create_post():
         flash(f"{new_post.subscription} Subscription Created Successfully!", "success")
         return redirect(url_for('index'))
     return render_template("create.html", form=form)
+
+@app.route('/edit/<post_id>', methods=["GET", "POST"])
+# So only logged in users can edit their posts
+@login_required
+def edit_post(post_id):
+    form = PostForm()
+    post_to_edit = Post.query.get_or_404(post_id)
+    # Make sure that the post author is the current user
+    if post_to_edit.author != current_user:
+        flash('You do not have permission to edit this post', 'danger')
+        return redirect(url_for('index'))
+    
+    # If form submitted, update Post
+    if form.validate_on_submit():
+        #  Update the post with the form data
+        post_to_edit.subscription = form.subscription.data
+        post_to_edit.amount = form.amount.data
+        # post_to_edit.date = form.date.data
+        post_to_edit.frequency = form.frequency.data
+        post_to_edit.image_url = form.image_url.data
+        db.session.commit()
+        flash(f'{post_to_edit.subscription} subscription has been updated successfully!', "success")
+        return redirect(url_for('index'))
+    
+    # Pre-populate the form with the Post to Edit's values
+    form.subscription.data = post_to_edit.subscription
+    form.amount.data = post_to_edit.amount
+    # form.date.data = post_to_edit.date
+    form.frequency.data = post_to_edit.frequency
+    form.image_url.data = post_to_edit.image_url
+    return render_template("edit.html", form=form, post=post_to_edit)
+    
+
     
