@@ -36,7 +36,7 @@ class User(db.Model, UserMixin):
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     subscription = db.Column(db.String(100), nullable=False)
-    amount = db.Column(db.Float, nullable=False)
+    amount = db.Column(db.Numeric(10,2), nullable=False)
     # image_url = db.Column(db.String(100), nullable=False, default=random_photos_url)
     date = db.Column(db.String(20), nullable=False)
     frequency = db.Column(db.String(100), nullable=False)
