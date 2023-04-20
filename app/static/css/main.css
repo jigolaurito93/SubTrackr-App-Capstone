@@ -1,5 +1,7 @@
 body{
-    background-color: black !important;;
+background-image: url('../images/BG2.jpg');
+background-repeat: no-repeat;
+background-size: cover;
 }
 
 #navi{
@@ -19,7 +21,10 @@ body{
 
 #header{
     font-family: 'Bebas Neue', cursive;
-    font-size: 50px;
+    font-size: 80px;
+    background-color: black;
+    height: 100px;
+ 
 }
 
 #btn{
