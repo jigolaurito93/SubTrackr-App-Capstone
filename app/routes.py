@@ -4,8 +4,12 @@ from app.forms import SignUpForm, LoginForm, PostForm
 from app.models import User, Post
 from flask_login import login_user, logout_user, login_required, current_user
 
+@app.route('/home', methods=['GET', 'POST'])
+def home():
+    return render_template("landing.html")
 
 @app.route("/")
+@login_required
 def index():
     posts = Post.query.all()
     return render_template("index.html", posts=posts)

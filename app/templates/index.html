@@ -3,7 +3,7 @@
 {% block title %} Home {% endblock %}
 
 {% block header %}  
-    <h1>Jose's Profile</h1>
+    <h1> Profile</h1>
     {% if current_user.is_authenticated %}
         <h5>Nice to See You Again, {{ current_user.username }}! </h5>
     {% else %}
@@ -13,38 +13,34 @@
 
 
 {% block content %}
-    <div class="row ">
-        <div class="col d-flex justify-content-center w-100">
+    <div class="container ">
+        <div class="row">
 
                 {% for post in posts %}
-                        <div class="card mt-3 mx-3 w-100">
-                            <div class="row ">
-                                <div class="col">
+                        
+                            <div class="col-12 col-md-6 col-lg-3 my-3">
+                                <div class="card h-100 px-2 my-3">
+                                      
+                                        <img class="mt-2 rounded" src="./static/images/{{ post.subscription }}.png" alt="" style="width: 250; height: 250;"">
+                              
+                                        <div class="card-body">
+                                            <div class="card-title">{{ post.subscription }}</div>
+                                            <div class="card-text">{{ post.date }}</div>       
+                                            <div class="card-text">${{ post.amount }}</div>    
+                                            <div class="card-text">{{ post.frequency }}</div>
+                                        </div>
+                                    
 
-                                    {% if post.subscription == 'Disney+' %}
-                                        <img class="" src="./static/disney.png" alt="" style="width: 310px; height: 310px;">
-                                    {% elif  post.subscription == 'Netflix' %}    
-                                        <img class="" src="./static/netflix.png" alt="" style="width: 310px; height: 310px;">
-                                    {% else %}
-                                        <img class="" src="./static/SubTrackr.png" alt="" style="width: 310px; height: 310px;">
-                                    {% endif %}
+                                    
+                                        <a href="{{ url_for('edit_post', post_id=post.id) }}", class="btn btn-success">Edit</a>        
+                                            <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePostModal-{{ post.id }}">
+                                            Delete
+                                        </button>
+                                    
 
-                                </div>
-                                <div class="col">
-                                    <h2 class="card-subtitle">{{ post.subscription }}</h2>
-                                    <h5 class="card-title">{{ post.date }}</h5>       
-                                    <h5 class="card-title">${{ post.amount }}</h5>    
-                                    <h5 class="card-title">{{ post.frequency }}</h5> 
-
-                                  
-                                    <a href="{{ url_for('edit_post', post_id=post.id) }}", class="btn btn-success">Edit</a>        
-                                           <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePostModal-{{ post.id }}">
-                                        Delete
-                                    </button>
-                                  
-
-                                </div>
+                                    
+                                
                             </div>
                         </div>
 
