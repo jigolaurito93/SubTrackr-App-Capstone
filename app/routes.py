@@ -108,5 +108,16 @@ def edit_post(post_id):
     form.image_url.data = post_to_edit.image_url
     return render_template("edit.html", form=form, post=post_to_edit)
     
-
+@app.route('/delete/<post_id>', methods=["GET", "POST"])
+@login_required
+def delete_post(post_id):
+    post_to_delete = Post.query.get_or_404(post_id)
+    # Make sure that the post author is the current user
+    if post_to_delete.author != current_user:
+        flash('You do not have permission to delete this post', 'danger')
+        return redirect(url_for('index'))
     
+    db.session.delete(post_to_delete)
+    db.session.commit()
+    flash(f'{post_to_delete.subscription} subscription has been deleted successfully!', "success")
+    return redirect(url_for('index'))
