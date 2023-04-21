@@ -19,11 +19,12 @@ background-size: cover;
     font-size: 23px;
 }
 
-#header{
+#header, #login, #signup, #create{
     font-family: 'Bebas Neue', cursive;
     font-size: 80px;
     background-color: black;
     height: 100px;
+    padding-top: 10px;
  
 }
 
@@ -31,3 +32,35 @@ background-size: cover;
     background-color: rgb(224, 159, 60);
     font-family: 'Maven Pro', sans-serif;
 }
+
+#cardmain:hover {
+    transform: scale(1.1);
+}
+
+#cardmain{
+    border-color: black;
+    border-width: 10px;
+}
+
+#AH{
+    font-family: 'Overpass', sans-serif;
+    margin-top: 10px;
+    padding-top: 20px;
+    font-size: 60px;
+}
+
+#AH1{
+    font-family: 'Overpass', sans-serif;
+    font-size: 60px;
+}
+
+#AP{
+    margin-top: 20px;
+    font-family: 'Overpass', sans-serif;
+    font-size: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+
+}
+

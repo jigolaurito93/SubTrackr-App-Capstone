@@ -3,7 +3,7 @@
 {% block title %} Sign Up {% endblock %}
 
 {% block header %}
-    <h1>Sign Up</h1>
+    <h1 id="signup">Sign Up</h1>
 {% endblock %}
 
     {% block content %}
@@ -11,7 +11,7 @@
             <div class="col-5">
 
                 <div class="card mt-5 ">
-                    <div class="card-body mx-5 my-5">
+                    <div class="card-body mx-5 mb-3 mt-2">
                         <form action="" method="post">
                             {{ form.csrf_token }}
 

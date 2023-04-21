@@ -82,6 +82,10 @@ def create_post():
         return redirect(url_for('index'))
     return render_template("create.html", form=form)
 
+@app.route('/aboutus')
+def aboutus():
+    return render_template("aboutus.html")
+
 @app.route('/edit/<post_id>', methods=["GET", "POST"])
 # So only logged in users can edit their posts
 @login_required
